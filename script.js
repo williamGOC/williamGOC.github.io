@@ -318,9 +318,118 @@ window.addEventListener('resize', resizeCanvas2);
 initParticles();
 drawParticles();
 
+let bgState = 0;
 document.getElementById('bg-toggle').addEventListener('click', () => {
-  bgActive = !bgActive;
-  document.getElementById('canvas-bg').style.transition = 'opacity 0.8s ease';
-  document.getElementById('canvas-bg2').style.opacity = bgActive ? '0.6' : '0';
-  document.getElementById('canvas-bg').style.opacity = bgActive ? '0' : '0.32';
+  bgState = (bgState + 1) % 3;
+  document.getElementById('canvas-bg').style.opacity  = bgState === 0 ? '0.32' : '0';
+  document.getElementById('canvas-bg2').style.opacity = bgState === 1 ? '0.6'  : '0';
+  document.getElementById('canvas-bg3').style.opacity = bgState === 2 ? '0.5'  : '0';
 });
+
+
+/* ── third background: soft matter droplets ── */
+const canvas3 = document.getElementById('canvas-bg3');
+const ctx3 = canvas3.getContext('2d');
+let W3, H3, drops;
+
+function resizeCanvas3() {
+  W3 = canvas3.width = window.innerWidth;
+  H3 = canvas3.height = window.innerHeight;
+}
+
+function initDrops() {
+  resizeCanvas3();
+  drops = Array.from({ length: 18 }, () => ({
+    x: Math.random() * W3,
+    y: Math.random() * H3,
+    r: 20 + Math.random() * 40,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+  }));
+}
+
+function drawDrops() {
+  ctx3.clearRect(0, 0, W3, H3);
+
+  // Attract and merge
+  for (let i = 0; i < drops.length; i++) {
+    for (let j = i + 1; j < drops.length; j++) {
+      const a = drops[i], b = drops[j];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const minDist = a.r + b.r;
+
+      if (dist < minDist * 1.5 && dist > 0) {
+        const force = 0.002 * (minDist - dist);
+        a.vx += (dx / dist) * force;
+        a.vy += (dy / dist) * force;
+        b.vx -= (dx / dist) * force;
+        b.vy -= (dy / dist) * force;
+      }
+
+      // Merge
+      if (dist < minDist * 0.6) {
+        const totalArea = Math.PI * a.r * a.r + Math.PI * b.r * b.r;
+        a.r = Math.sqrt(totalArea / Math.PI);
+        a.vx = (a.vx + b.vx) * 0.5;
+        a.vy = (a.vy + b.vy) * 0.5;
+        drops.splice(j, 1);
+        j--;
+      }
+    }
+
+    // Split if too large
+    if (drops[i] && drops[i].r > 90) {
+      const p = drops[i];
+      const newR = p.r / Math.sqrt(2);
+      drops.push({
+        x: p.x + newR * 0.5, y: p.y,
+        r: newR, vx: p.vx + 0.3, vy: p.vy
+      });
+      p.x -= newR * 0.5;
+      p.r = newR;
+      p.vx -= 0.3;
+    }
+
+    // Refill if too few
+    if (drops.length < 10) {
+      drops.push({
+        x: Math.random() * W3, y: Math.random() * H3,
+        r: 15 + Math.random() * 25,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+      });
+    }
+  }
+
+  // Draw
+  drops.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x - p.r < 0) { p.x = p.r; p.vx *= -1; }
+    if (p.x + p.r > W3) { p.x = W3 - p.r; p.vx *= -1; }
+    if (p.y - p.r < 0) { p.y = p.r; p.vy *= -1; }
+    if (p.y + p.r > H3) { p.y = H3 - p.r; p.vy *= -1; }
+
+    const grad = ctx3.createRadialGradient(
+      p.x - p.r * 0.3, p.y - p.r * 0.3, p.r * 0.1,
+      p.x, p.y, p.r
+    );
+    grad.addColorStop(0, 'rgba(139, 180, 255, 0.18)');
+    grad.addColorStop(0.6, 'rgba(91, 138, 240, 0.10)');
+    grad.addColorStop(1, 'rgba(91, 138, 240, 0.03)');
+
+    ctx3.beginPath();
+    ctx3.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx3.fillStyle = grad;
+    ctx3.fill();
+    ctx3.strokeStyle = 'rgba(139, 180, 255, 0.25)';
+    ctx3.lineWidth = 1;
+    ctx3.stroke();
+  });
+
+  requestAnimationFrame(drawDrops);
+}
+
+window.addEventListener('resize', resizeCanvas3);
+initDrops();
+drawDrops();
