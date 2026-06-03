@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>William G. Carreras Oropesa — Physicist</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="William G. Carreras Oropesa — Physicist" />
+  <meta property="og:description" content="Theoretical & Computational Physicist working on quantum dynamics, relativistic fluids, and quantum information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://williamcarreras.com" />
+  <meta name="description" content="Portfolio of William Gabriel Carreras Oropesa, Theoretical & Computational Physicist." />
+  <meta name="author" content="William Gabriel Carreras Oropesa" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="William G. Carreras Oropesa — Physicist" />
+  <meta name="twitter:description" content="Theoretical & Computational Physicist working on quantum dynamics, relativistic fluids, and quantum information." />
+
+  <!-- Favicon: ψ symbol as inline SVG data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080a0e'/><text y='78' x='50' text-anchor='middle' font-size='72' fill='%235b8af0' font-family='Georgia,serif'>ψ</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- MathJax -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<canvas id="canvas-bg"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <a class="nav-logo" href="#hero">William G. C. Oropesa</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#code">Code</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#outreach">Outreach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div>
+          <div class="hero-label">Theoretical &amp; Computational Physicist</div>
+        </div>
+      </div>
+
+      <div class="news-carousel-full" id="newsCarousel">
+        <div class="news-header">
+          <span class="news-label">Physics &amp; Science · Latest</span>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="news-dots" id="newsDots"></div>
+            <button class="news-btn" id="newsPrev" aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+            </button>
+            <button class="news-btn" id="newsNext" aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="news-track-wrap">
+          <div class="news-track" id="newsTrack">
+            <div class="news-loading">
+              <div class="news-spinner"></div>
+              <span>Fetching latest news…</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-feed-label">Latest News</div>
+      <div class="news-feed reveal">
+        <div class="news-feed-item">
+          <span class="news-feed-source">Phys.org</span>
+          <a href="#" class="news-feed-title">Physicists detect quantum interference in room-temperature molecules</a>
+          <span class="news-feed-date">2 Jun 2026</span>
+        </div>
+        <div class="news-feed-item">
+          <span class="news-feed-source">New Scientist</span>
+          <a href="#" class="news-feed-title">New gravitational wave event hints at neutron star–black hole merger</a>
+          <span class="news-feed-date">1 Jun 2026</span>
+        </div>
+        <div class="news-feed-item">
+          <span class="news-feed-source">Science Daily</span>
+          <a href="#" class="news-feed-title">Quantum computing milestone: logical qubit holds coherence for 1 second</a>
+          <span class="news-feed-date">31 May 2026</span>
+        </div>
+        <div class="news-feed-item">
+          <span class="news-feed-source">arXiv</span>
+          <a href="#" class="news-feed-title">Dark energy constraints tightened by new galaxy survey data</a>
+          <span class="news-feed-date">30 May 2026</span>
+        </div>
+        <div class="news-feed-item">
+          <span class="news-feed-source">Phys.org</span>
+          <a href="#" class="news-feed-title">First direct image of an electron orbital captured in lab</a>
+          <span class="news-feed-date">29 May 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">01 — Profile</div>
+      <h2 class="section-title">About me</h2>
+    </div>
+
+    <div class="about-full reveal">
+
+      <!-- Left: photo + bio + skills -->
+      <div class="about-left-block">
+        <div class="about-photo-wrap">
+          <img src="foto.jpg" alt="William G. Carreras Oropesa" />
+        </div>
+
+        <p class="about-text">
+          Physicist working at the intersection of <strong>statistical physics</strong>, <strong>soft matter</strong>,
+          and <strong>non-equilibrium dynamics</strong>. Trained at Instituto Balseiro and the University of São Paulo,
+          I now work as a Postdoctoral Researcher at <strong>ICTP-SAIFR</strong>, where my research
+          spans phase transitions, active matter, and adaptive environments.
+        </p>
+        <p class="about-text">
+          I build the computational tools my research demands — CUDA-accelerated
+          molecular dynamics, parallel algorithms, and numerical models in C/C++ and Python — with
+          an eye toward reproducibility and performance at scale.
+        </p>
+      </div>
+
+      <!-- Right: timeline -->
+      <div class="about-right-block">
+        <div class="timeline-label">Academic journey</div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div class="tl-content">
+              <div class="tl-year">2025 — present</div>
+              <div class="tl-role">Postdoctoral Researcher</div>
+              <div class="tl-place">South American Institute for Fundamental Research · ICTP-SAIFR</div>
+              <div class="tl-desc">Statistical Physics and High-Performance Simulations of Soft Matter Systems.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div class="tl-content">
+              <div class="tl-year">2019 — 2023</div>
+              <div class="tl-role">PhD in Physics</div>
+              <div class="tl-place">University of São Paulo · USP</div>
+              <div class="tl-desc">Dissertation: <em>Phase diagrams of microscopic models for nematogenic mixtures.</em></div>
+              <div class="tl-desc">Advisor: Prof. André P. Vieira.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div class="tl-content">
+              <div class="tl-year">2017 — 2018</div>
+              <div class="tl-role">MSc in Physics</div>
+              <div class="tl-place">Balseiro Institute · IB</div>
+              <div class="tl-desc">Dissertation: <em>Magneto-structural properties of \(\mathrm{CeCo_{1-x}Fe_{x}Si}\) and \(\mathrm{CeSc_{1-x}Ti_{x}Ge}\) compounds.</em></div>
+              <div class="tl-desc">Advisor: Prof. Pablo S. Cornaglia.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div class="tl-content">
+              <div class="tl-year">2015 — 2017</div>
+              <div class="tl-role">BSc in Physics</div>
+              <div class="tl-place">Balseiro Institute · IB</div>
+              <div class="tl-desc">Dissertation: <em>Magneto-structural properties of \(\mathrm{CeCo_{0.85}Fe_{0.25}Si}\).</em></div>
+              <div class="tl-desc">Advisor: Prof. Pablo S. Cornaglia.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Full-width skills -->
+    <div class="skills-grid skills-grid--full reveal">
+      <div class="skill-item">
+        <div class="skill-name">Statistical Physics</div>
+        <div class="skill-desc">Phase transitions, soft matter, non-equilibrium systems</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Scientific Computing</div>
+        <div class="skill-desc">CUDA/GPU, C/C++, Python, parallel algorithms</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Numerical Modelling</div>
+        <div class="skill-desc">Molecular dynamics, Monte Carlo, complex systems</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Theoretical Physics</div>
+        <div class="skill-desc">Mean-field theory, active matter, adaptive networks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">02 — Work</div>
+      <h2 class="section-title">Research</h2>
+    </div>
+    <div class="accordion reveal">
+
+      <div class="acc-item">
+        <button class="acc-header" aria-expanded="false">
+          <div class="acc-left">
+            <span class="acc-num">01</span>
+            <div>
+              <div class="acc-title">Quantum dynamics on topological networks</div>
+            </div>
+          </div>
+          <svg class="acc-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-inner-pad">
+              <p class="acc-desc">Study of quantum state propagation in non-trivial geometries, with implications for the design of quantum circuits robust against decoherence. The central question is whether topological invariants can be exploited as natural error-correction mechanisms without active correction protocols.</p>
+              <div class="tags">
+                <span class="tag">Quantum mechanics</span>
+                <span class="tag">Topology</span>
+                <span class="tag">Quantum computing</span>
+                <span class="tag">Python</span>
+              </div>
+              <div class="acc-status">● Ongoing · 2024–present</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" aria-expanded="false">
+          <div class="acc-left">
+            <span class="acc-num">02</span>
+            <div>
+              <div class="acc-title">Relativistic fluid simulation</div>
+            </div>
+          </div>
+          <svg class="acc-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-inner-pad">
+              <p class="acc-desc">Implementation of high-precision numerical schemes to solve relativistic hydrodynamics equations in environments with intense gravitational fields, including neutron star mergers and accretion discs around black holes. Focused on convergence properties and shock-capturing methods.</p>
+              <div class="tags">
+                <span class="tag">General relativity</span>
+                <span class="tag">CFD</span>
+                <span class="tag">Julia</span>
+                <span class="tag">C++</span>
+              </div>
+              <div class="acc-status">● Published · 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" aria-expanded="false">
+          <div class="acc-left">
+            <span class="acc-num">03</span>
+            <div>
+              <div class="acc-title">Entanglement entropy in many-body systems</div>
+            </div>
+          </div>
+          <svg class="acc-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-inner-pad">
+              <p class="acc-desc">Analysis of quantum phase transitions through bipartite entanglement measures, connecting statistical physics with quantum information theory. Special focus on critical exponents and scaling behaviour near phase boundaries in 1D and 2D spin chains.</p>
+              <div class="tags">
+                <span class="tag">Statistical physics</span>
+                <span class="tag">Entanglement</span>
+                <span class="tag">Python</span>
+                <span class="tag">QuTiP</span>
+              </div>
+              <div class="acc-status">● Published · 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" aria-expanded="false">
+          <div class="acc-left">
+            <span class="acc-num">04</span>
+            <div>
+              <div class="acc-title">Dark matter density profiles via gravitational lensing</div>
+            </div>
+          </div>
+          <svg class="acc-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-inner-pad">
+              <p class="acc-desc">Reconstruction of dark matter halo profiles in galaxy clusters using weak and strong gravitational lensing data. The project combines Bayesian inference with ray-tracing simulations to constrain NFW and Einasto profile parameters from observational surveys.</p>
+              <div class="tags">
+                <span class="tag">Cosmology</span>
+                <span class="tag">Bayesian inference</span>
+                <span class="tag">Gravitational lensing</span>
+                <span class="tag">Python / NumPy</span>
+              </div>
+              <div class="acc-status">● In progress · 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" aria-expanded="false">
+          <div class="acc-left">
+            <span class="acc-num">05</span>
+            <div>
+              <div class="acc-title">Machine learning for quantum state tomography</div>
+            </div>
+          </div>
+          <svg class="acc-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <div class="acc-inner-pad">
+              <p class="acc-desc">Development of neural network architectures to reconstruct density matrices from incomplete measurement data. The approach significantly reduces the number of measurements needed compared to standard tomography, enabling scalable characterisation of multi-qubit states.</p>
+              <div class="tags">
+                <span class="tag">Quantum information</span>
+                <span class="tag">Neural networks</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">Tomography</span>
+              </div>
+              <div class="acc-status">● Exploratory · 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CODE -->
+<section id="code">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">03 — Software</div>
+      <h2 class="section-title">Code</h2>
+      <p class="code-intro">Open-source tools and libraries I have built or contributed to, bridging theoretical physics and reproducible computation.</p>
+    </div>
+
+    <div class="code-grid reveal">
+      <div class="code-card">
+        <div class="code-card-lang">Python · GitHub</div>
+        <div class="code-card-title">quantopo</div>
+        <div class="code-card-desc">Simulation of quantum walks on arbitrary graph topologies. Supports time evolution, decoherence channels, and entanglement metrics.</div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-lang">Julia · GitHub</div>
+        <div class="code-card-title">RelFluid.jl</div>
+        <div class="code-card-desc">High-order WENO schemes for relativistic hydrodynamics. Tested against TOV star solutions and Blandford–McKee blast waves.</div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-lang">Python · PyPI</div>
+        <div class="code-card-title">entropix</div>
+        <div class="code-card-desc">Fast entanglement entropy computations for 1D and 2D lattice models, with support for the DMRG interface via ITensor.</div>
+      </div>
+    </div>
+
+    <div class="code-block-wrap reveal">
+      <div class="code-block-header">
+        <div class="code-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="code-block-label">quantopo · quantum_walk.py</span>
+        <span></span>
+      </div>
+      <pre><span class="cm"># Discrete-time quantum walk on a graph</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+<span class="kw">from</span> scipy.linalg <span class="kw">import</span> expm
+<span class="kw">from</span> quantopo <span class="kw">import</span> Graph, CoinOperator
+
+<span class="kw">def</span> <span class="fn">quantum_walk</span>(graph: Graph, steps: <span class="fn">int</span>, coin: <span class="fn">str</span> = <span class="st">"hadamard"</span>) -> np.ndarray:
+    <span class="st">"""
+    Evolve a quantum walk on `graph` for `steps` time steps.
+    Returns the probability distribution over nodes.
+    """</span>
+    C = CoinOperator(coin, graph.degree)
+    S = graph.shift_operator()          <span class="cm"># position-shift in Hilbert space</span>
+    U = S @ (C <span class="kw">⊗</span> np.eye(graph.n))    <span class="cm"># single-step unitary</span>
+
+    psi = graph.localise(node=<span class="num">0</span>)       <span class="cm"># initial state |0, ↑⟩</span>
+    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(steps):
+        psi = U @ psi
+
+    <span class="cm"># Trace out the coin degree of freedom</span>
+    rho = psi.reshape(graph.n, -<span class="num">1</span>)
+    <span class="kw">return</span> np.<span class="fn">sum</span>(np.<span class="fn">abs</span>(rho) ** <span class="num">2</span>, axis=<span class="num">1</span>)
+
+<span class="cm"># Example: 64-node cycle graph, 200 steps</span>
+G = Graph.<span class="fn">cycle</span>(<span class="num">64</span>)
+prob = <span class="fn">quantum_walk</span>(G, steps=<span class="num">200</span>)
+<span class="fn">print</span>(<span class="st">f"Peak probability: </span>{prob.<span class="fn">max</span>():<span class="num">.4f</span>}<span class="st">"</span>)</pre>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">04 — Writing</div>
+      <h2 class="section-title">Publications</h2>
+    </div>
+    <div class="pub-subsection-label reveal">Published</div>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Physical Review E · 2024</div>
+        <div class="pub-title">Mean-field model for a mixture of biaxial nematogens and dipolar nanoparticles</div>
+        <div class="pub-authors"><strong>W. G. C. Oropesa</strong>, E. S. Nascimento, and A. P. Vieira.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2308.00517" target="_blank" rel="noopener">arXiv:2308.00517</a></div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Physical Review E · 2022</div>
+        <div class="pub-title">Phase behavior of a lattice-gas model for biaxial nematics</div>
+        <div class="pub-authors"><strong>W. G. C. Oropesa</strong>, E. S. Nascimento, and A. P. Vieira.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2201.12943" target="_blank" rel="noopener">arXiv:2201.12943</a></div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Physical Review Research · 2021</div>
+        <div class="pub-title">Efficient asymmetric collisional Brownian particle engines</div>
+        <div class="pub-authors">C. E. F. Noa, A. L. L. Stable, <strong>W. G. C. Oropesa</strong>, A. Rosas, and C. E. Fiore.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2108.01118" target="_blank" rel="noopener">arXiv:2108.01118</a></div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Physical Review Research · 2020</div>
+        <div class="pub-title">Thermodynamics of collisional models for Brownian particles: General properties and efficiency</div>
+        <div class="pub-authors">A. L. L. Stable, C. E. F. Noa, <strong>W. G. C. Oropesa</strong>, and C. E. Fiore.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2005.00639" target="_blank" rel="noopener">arXiv:2005.00639</a></div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Journal of Magnetism and Magnetic Materials · 2020</div>
+        <div class="pub-title">Minimal model for the magnetic phase diagram of \(\mathrm{CeTi_{1-x}Sc_{x}Ge}\) and \(\mathrm{GdFe_{1-x}Co_{x}si}\), and related materials</div>
+        <div class="pub-authors"><strong>W. G. C. Oropesa</strong>, S. Encina, P. Pedrazzini, V. F. Correa, J. G. Sereni, V. Vildosola, D. J. García, and P S. Cornaglia.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/1911.06235" target="_blank" rel="noopener">arXiv:1911.06235</a></div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-journal">Journal of Physics: Condensed Matter · 2018</div>
+        <div class="pub-title">Landau theory for magnetic and structural transitions in \(\mathrm{CeCo_{0.85}Fe_{0.15}si}\)</div>
+        <div class="pub-authors"><strong>W. G. C. Oropesa</strong>, V. F. Correa, J. G. Sereni, D. J. García, and P S. Cornaglia.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/1802.02600" target="_blank" rel="noopener">arXiv:1802.02600</a></div>
+      </div>
+
+    </div>
+
+    <div class="pub-subsection-label reveal" style="margin-top: 3rem;">In Preparation</div>
+    <div class="pub-list">
+
+      <div class="pub-item pub-item--prep reveal">
+        <div class="pub-journal pub-journal--prep">preprint · 2026</div>
+        <div class="pub-title">Transport Properties of Active Particles Moving on Adjustable Networks</div>
+        <div class="pub-authors"><strong>W. G. C. Oropesa</strong>, P. de Castro, H. Löwen, D. B. Liarte.</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2602.04732" target="_blank" rel="noopener">arXiv:2602.04732</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH -->
+<section id="outreach">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">05 — Outreach</div>
+      <h2 class="section-title">Outreach</h2>
+      <p class="code-intro">Bringing physics beyond the lecture hall — talks, writing, and public engagement.</p>
+    </div>
+
+    <div class="outreach-grid reveal">
+
+      <div class="outreach-card">
+        <div class="outreach-type">Public Talk</div>
+        <div class="outreach-title">Quantum Mechanics for Everyone</div>
+        <div class="outreach-desc">A non-technical lecture series delivered at local science cafés and community centres, covering superposition, entanglement, and why the quantum world defies our intuitions.</div>
+        <div class="outreach-meta">
+          <span>Caracas Science Café</span>
+          <span>2024</span>
+        </div>
+      </div>
+
+      <div class="outreach-card">
+        <div class="outreach-type">Workshop</div>
+        <div class="outreach-title">Introduction to Computational Physics</div>
+        <div class="outreach-desc">Two-day workshop for undergraduate students on Python-based scientific computing: numerical integration, ODEs, and Monte Carlo methods applied to physical systems.</div>
+        <div class="outreach-meta">
+          <span>Universidad Central de Venezuela</span>
+          <span>2023</span>
+        </div>
+      </div>
+
+      <div class="outreach-card">
+        <div class="outreach-type">Article</div>
+        <div class="outreach-title">What Does It Mean for a Particle to Have No Position?</div>
+        <div class="outreach-desc">Popular science article exploring the measurement problem and wave function collapse, published in an open-access science magazine aimed at general audiences.</div>
+        <div class="outreach-meta">
+          <span>Ciencia Abierta</span>
+          <span>2023</span>
+        </div>
+      </div>
+
+      <div class="outreach-card">
+        <div class="outreach-type">School Visit</div>
+        <div class="outreach-title">The Universe at the Smallest Scale</div>
+        <div class="outreach-desc">Interactive session for high school students exploring the Standard Model, particle accelerators, and what physicists are still trying to understand about fundamental matter.</div>
+        <div class="outreach-meta">
+          <span>Colegio La Salle, Caracas</span>
+          <span>2022</span>
+        </div>
+      </div>
+
+      <div class="outreach-card">
+        <div class="outreach-type">Podcast</div>
+        <div class="outreach-title">Guest on <em>Física sin Fronteras</em></div>
+        <div class="outreach-desc">Episode discussing the current state of quantum gravity research, the tension between general relativity and quantum mechanics, and what a theory of everything might look like.</div>
+        <div class="outreach-meta">
+          <span>Física sin Fronteras</span>
+          <span>2022</span>
+        </div>
+      </div>
+
+      <div class="outreach-card">
+        <div class="outreach-type">Mentorship</div>
+        <div class="outreach-title">Physics Mentorship Programme</div>
+        <div class="outreach-desc">Year-long one-on-one mentorship with undergraduate students from underrepresented backgrounds pursuing careers in theoretical and computational physics.</div>
+        <div class="outreach-meta">
+          <span>Ongoing</span>
+          <span>2022–present</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-divider"></div>
+    <div class="reveal">
+      <div class="section-label">06 — Contact</div>
+      <h2 class="section-title">Let's talk</h2>
+      <p class="contact-intro">
+        Have a collaboration proposal, a research question, or just want to discuss physics? Write to me.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:william@example.com">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 4l7 5 7-5"/></svg>
+          Email
+        </a>
+        <a class="contact-link" href="#" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 1c-2 2-3 4-3 7s1 5 3 7M8 1c2 2 3 4 3 7s-1 5-3 7M1 8h14"/></svg>
+          Institutional page
+        </a>
+        <a class="contact-link" href="https://arxiv.org" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
+          arXiv
+        </a>
+        <a class="contact-link" href="https://linkedin.com" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M5 7v5M5 5v.01M8 12v-3a2 2 0 014 0v3M8 7v5"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <span>© 2026 William Gabriel Carreras Oropesa</span>
+    <span style="font-family: var(--mono); font-size: 0.65rem; color: var(--border);">∇·B = 0</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
