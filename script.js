@@ -392,8 +392,8 @@ function drawDrops() {
       drops.push({
         x: Math.random() * W3, y: Math.random() * H3,
         r: 15 + Math.random() * 25,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
         phase: Math.random() * Math.PI * 2
       });
     }
@@ -406,15 +406,15 @@ function drawDrops() {
     if (p.y - p.r < 0) { p.y = p.r; p.vy *= -1; }
     if (p.y + p.r > H3) { p.y = H3 - p.r; p.vy *= -1; }
 
-    p.phase = (p.phase || 0) + 0.03;
+    p.phase = (p.phase || 0) + 0.08;
 
-    // Deformed blob shape
-    const points = 12;
+    const points = 16;
     ctx3.beginPath();
     for (let k = 0; k <= points; k++) {
       const angle = (k / points) * Math.PI * 2;
-      const wobble = 1 + 0.18 * Math.sin(3 * angle + p.phase)
-                       + 0.10 * Math.sin(5 * angle - p.phase * 1.3);
+      const wobble = 1 + 0.45 * Math.sin(3 * angle + p.phase)
+                       + 0.25 * Math.sin(5 * angle - p.phase * 1.7)
+                       + 0.15 * Math.sin(7 * angle + p.phase * 0.9);
       const rx = p.x + Math.cos(angle) * p.r * wobble;
       const ry = p.y + Math.sin(angle) * p.r * wobble;
       k === 0 ? ctx3.moveTo(rx, ry) : ctx3.lineTo(rx, ry);
