@@ -350,7 +350,6 @@ function initDrops() {
 function drawDrops() {
   ctx3.clearRect(0, 0, W3, H3);
 
-  // Attract and merge
   for (let i = 0; i < drops.length; i++) {
     for (let j = i + 1; j < drops.length; j++) {
       const a = drops[i], b = drops[j];
@@ -366,7 +365,6 @@ function drawDrops() {
         b.vy -= (dy / dist) * force;
       }
 
-      // Merge
       if (dist < minDist * 0.6) {
         const totalArea = Math.PI * a.r * a.r + Math.PI * b.r * b.r;
         a.r = Math.sqrt(totalArea / Math.PI);
@@ -377,31 +375,30 @@ function drawDrops() {
       }
     }
 
-    // Split if too large
     if (drops[i] && drops[i].r > 90) {
       const p = drops[i];
       const newR = p.r / Math.sqrt(2);
       drops.push({
         x: p.x + newR * 0.5, y: p.y,
-        r: newR, vx: p.vx + 0.3, vy: p.vy
+        r: newR, vx: p.vx + 0.3, vy: p.vy,
+        phase: Math.random() * Math.PI * 2
       });
       p.x -= newR * 0.5;
       p.r = newR;
       p.vx -= 0.3;
     }
 
-    // Refill if too few
     if (drops.length < 10) {
       drops.push({
         x: Math.random() * W3, y: Math.random() * H3,
         r: 15 + Math.random() * 25,
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
+        phase: Math.random() * Math.PI * 2
       });
     }
   }
 
-  // Draw
   drops.forEach(p => {
     p.x += p.vx; p.y += p.vy;
     if (p.x - p.r < 0) { p.x = p.r; p.vx *= -1; }
@@ -409,19 +406,32 @@ function drawDrops() {
     if (p.y - p.r < 0) { p.y = p.r; p.vy *= -1; }
     if (p.y + p.r > H3) { p.y = H3 - p.r; p.vy *= -1; }
 
+    p.phase = (p.phase || 0) + 0.03;
+
+    // Deformed blob shape
+    const points = 12;
+    ctx3.beginPath();
+    for (let k = 0; k <= points; k++) {
+      const angle = (k / points) * Math.PI * 2;
+      const wobble = 1 + 0.18 * Math.sin(3 * angle + p.phase)
+                       + 0.10 * Math.sin(5 * angle - p.phase * 1.3);
+      const rx = p.x + Math.cos(angle) * p.r * wobble;
+      const ry = p.y + Math.sin(angle) * p.r * wobble;
+      k === 0 ? ctx3.moveTo(rx, ry) : ctx3.lineTo(rx, ry);
+    }
+    ctx3.closePath();
+
     const grad = ctx3.createRadialGradient(
       p.x - p.r * 0.3, p.y - p.r * 0.3, p.r * 0.1,
-      p.x, p.y, p.r
+      p.x, p.y, p.r * 1.2
     );
-    grad.addColorStop(0, 'rgba(139, 180, 255, 0.18)');
-    grad.addColorStop(0.6, 'rgba(91, 138, 240, 0.10)');
-    grad.addColorStop(1, 'rgba(91, 138, 240, 0.03)');
+    grad.addColorStop(0, 'rgba(139, 180, 255, 0.22)');
+    grad.addColorStop(0.6, 'rgba(91, 138, 240, 0.12)');
+    grad.addColorStop(1, 'rgba(91, 138, 240, 0.02)');
 
-    ctx3.beginPath();
-    ctx3.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx3.fillStyle = grad;
     ctx3.fill();
-    ctx3.strokeStyle = 'rgba(139, 180, 255, 0.25)';
+    ctx3.strokeStyle = 'rgba(139, 180, 255, 0.3)';
     ctx3.lineWidth = 1;
     ctx3.stroke();
   });
