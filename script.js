@@ -252,3 +252,74 @@ window.addEventListener('scroll', () => {
   render();
   resetAuto();
 })();
+
+
+/* ── second background: trailing particles ── */
+const canvas2 = document.getElementById('canvas-bg2');
+const ctx2 = canvas2.getContext('2d');
+let W2, H2, particles;
+let bgActive = false;
+
+function resizeCanvas2() {
+  W2 = canvas2.width = window.innerWidth;
+  H2 = canvas2.height = window.innerHeight;
+}
+
+function initParticles() {
+  resizeCanvas2();
+  particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * W2,
+    y: Math.random() * H2,
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: (Math.random() - 0.5) * 1.5,
+    age: 0,
+    life: 180 + Math.random() * 120,
+    hue: 210 + Math.random() * 40
+  }));
+}
+
+function drawParticles() {
+  ctx2.fillStyle = 'rgba(8,10,14,0.18)';
+  ctx2.fillRect(0, 0, W2, H2);
+
+  particles.forEach((p, i) => {
+    p.vx += (Math.random() - 0.5) * 0.08;
+    p.vy += (Math.random() - 0.5) * 0.08;
+    const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+    if (speed > 2) { p.vx *= 2 / speed; p.vy *= 2 / speed; }
+
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W2; if (p.x > W2) p.x = 0;
+    if (p.y < 0) p.y = H2; if (p.y > H2) p.y = 0;
+
+    p.age++;
+    if (p.age > p.life) {
+      particles[i] = {
+        x: Math.random() * W2, y: Math.random() * H2,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        age: 0, life: 180 + Math.random() * 120,
+        hue: 210 + Math.random() * 40
+      };
+    }
+
+    const alpha = Math.sin((p.age / p.life) * Math.PI) * 0.8;
+    ctx2.beginPath();
+    ctx2.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx2.fillStyle = `hsla(${p.hue}, 80%, 70%, ${alpha})`;
+    ctx2.fill();
+  });
+
+  requestAnimationFrame(drawParticles);
+}
+
+window.addEventListener('resize', resizeCanvas2);
+initParticles();
+drawParticles();
+
+document.getElementById('bg-toggle').addEventListener('click', () => {
+  bgActive = !bgActive;
+  document.getElementById('canvas-bg').style.transition = 'opacity 0.8s ease';
+  document.getElementById('canvas-bg2').style.opacity = bgActive ? '0.6' : '0';
+  document.getElementById('canvas-bg').style.opacity = bgActive ? '0' : '0.32';
+});
