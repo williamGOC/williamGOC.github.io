@@ -317,12 +317,12 @@ window.addEventListener('resize', resizeCanvas2);
 initParticles();
 drawParticles();
 
-let bgState = 0;
+window.bgState = 0;
 document.getElementById('bg-toggle').addEventListener('click', () => {
-  bgState = (bgState + 1) % 3;
-  document.getElementById('canvas-bg').style.opacity  = bgState === 0 ? '0.32' : '0';
-  document.getElementById('canvas-bg2').style.opacity = bgState === 1 ? '0.6'  : '0';
-  document.getElementById('canvas-bg3').style.opacity = bgState === 2 ? '0.5'  : '0';
+  window.bgState = (window.bgState + 1) % 3;
+  document.getElementById('canvas-bg').style.opacity  = window.bgState === 0 ? '0.32' : '0';
+  document.getElementById('canvas-bg2').style.opacity = window.bgState === 1 ? '0.6'  : '0';
+  document.getElementById('canvas-bg3').style.opacity = window.bgState === 2 ? '0.5'  : '0';
 });
 
 
