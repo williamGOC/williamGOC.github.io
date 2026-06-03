@@ -283,8 +283,9 @@ function drawParticles() {
   ctx2.fillRect(0, 0, W2, H2);
 
   particles.forEach((p, i) => {
-    p.vx += (Math.random() - 0.5) * 0.08;
-    p.vy += (Math.random() - 0.5) * 0.08;
+    p.angle = (p.angle || Math.atan2(p.vy, p.vx)) + (Math.random() - 0.5) * 0.15;
+    p.vx = Math.cos(p.angle) * 1.8;
+    p.vy = Math.sin(p.angle) * 1.8;
     const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
     if (speed > 2) { p.vx *= 2 / speed; p.vy *= 2 / speed; }
 
