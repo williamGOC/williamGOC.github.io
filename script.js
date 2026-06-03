@@ -258,7 +258,6 @@ window.addEventListener('scroll', () => {
 const canvas2 = document.getElementById('canvas-bg2');
 const ctx2 = canvas2.getContext('2d');
 let W2, H2, particles;
-let bgActive = false;
 
 function resizeCanvas2() {
   W2 = canvas2.width = window.innerWidth;
